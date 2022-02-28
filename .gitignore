@@ -1,0 +1,9 @@
+/output
+*.save
+*.ii
+*.o
+*.s
+*.bak
+*.layout
+*.hex
+*.depend
