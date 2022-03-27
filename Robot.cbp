@@ -2,7 +2,7 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="AVR-project" />
+		<Option title="Robot" />
 		<Option pch_mode="2" />
 		<Option compiler="avr-gcc" />
 		<Build>
@@ -65,14 +65,16 @@
 				</Environment>
 			</Target>
 			<Environment>
-				<Variable name="ADAPTER" value="usbasp" />
-				<Variable name="ADAPTER_PORT" value="" />
+				<Variable name="ADAPTER" value="arduino" />
+				<Variable name="ADAPTER_PORT" value="/dev/ttyUSB0" />
 			</Environment>
 		</Build>
 		<Compiler>
+			<Add option="-flto" />
 			<Add option="-O" />
 			<Add option="-Wextra" />
 			<Add option="-Wall" />
+			<Add option="-std=c++11" />
 			<Add option="-x c++" />
 			<Add option="-save-temps=obj" />
 			<Add option="-mmcu=$(MCU)" />
@@ -81,6 +83,7 @@
 			<Add directory="include" />
 		</Compiler>
 		<Linker>
+			<Add option="-flto" />
 			<Add option="-mmcu=$(MCU)" />
 			<Add option="-nodefaultlibs" />
 			<Add option="-Wl,-Map=$(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).map" />
@@ -102,12 +105,15 @@
 			<Add after="avr-size -C --mcu=$(MCU) -d $(TARGET_OUTPUT_FILE)" />
 		</ExtraCommands>
 		<Unit filename="include/config.h" />
+		<Unit filename="include/motor.h" />
+		<Unit filename="lib/avr-misc/avr-GPIO.h" />
 		<Unit filename="lib/avr-misc/avr-common.h" />
 		<Unit filename="lib/avr-misc/avr-delay.h" />
 		<Unit filename="lib/avr-misc/avr-interrupts.h" />
 		<Unit filename="lib/avr-misc/avr-misc.cpp" />
 		<Unit filename="lib/avr-misc/avr-misc.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="motor.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
